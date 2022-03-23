@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     VideoView videview;
     Button btntomarvideo;
     Button btnguardar;
-    String currentpath;
+    String curpath;
     byte[] bArrayVideo;
 
     @Override
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         );
 
         // Save a file: path for use with ACTION_VIEW intents
-        currentpath = vid.getAbsolutePath();
+        curpath = vid.getAbsolutePath();
         return vid;
     }
 
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
         if (requestCode == REQUEST_VIDEO_CAPTURE && resultCode == RESULT_OK) {
-            File vidFile = new File(currentpath);
+            File vidFile = new File(curpath);
             Uri urivideo = Uri.fromFile(vidFile);
             videview.setVideoURI(urivideo);
             videview.setMediaController(new MediaController(this));
